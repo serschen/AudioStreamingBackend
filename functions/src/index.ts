@@ -134,8 +134,8 @@ export const heartSong = functions.https.onRequest((request, response) => {
   } else {
     admin.firestore().collection("FavSongs")
       .add({UserId: userId, SongId: songId})
-      .then(() => {
-        response.send({status: 200, data: true});
+      .then((res) => {
+        response.send({status: 200, data: res.id});
       })
       .catch((error) => {
         console.log(error);
